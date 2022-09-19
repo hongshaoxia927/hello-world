@@ -1,0 +1,22 @@
+name: github action example
+
+on: 
+  push:
+    branches:
+      - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: use node.js
+        uses: actions/setup-node@v1
+        with: 
+          node-version: 16.16.0
+      - name: install depencies and build package
+        run: |
+            npm install
+            npm run build
+
+        env: 
+          CI: true
