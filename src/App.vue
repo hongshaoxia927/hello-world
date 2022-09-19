@@ -1,3 +1,3 @@
-<tempalte>
+<template>
   <div>here is a simple vue app</div>
-</tempalte>
+</template>
