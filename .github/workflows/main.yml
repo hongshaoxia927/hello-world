@@ -20,7 +20,7 @@ jobs:
         uses: wlixcc/SFTP-Deploy-Action@v1.0
         with: 
           username: 'lighthouse'
-          server: ${{ secrets.server_ip }}
-          ssh_private_key: ${{ secrets.server_ssh_key }}
+          server: ${{ secrets.SERVER_IP }}
+          ssh_private_key: ${{ secrets.SERVER_SSH_KEY }}
           local_path: './docs'
           remote_path: '/home/lighthouse/deploy-test'
