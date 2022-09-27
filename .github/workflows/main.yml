@@ -22,6 +22,6 @@ jobs:
             SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
             ARGS: -rltgoDzvO --delete
             SOURCE: ./docs/
-            REMOTE_HOST: ${{ sercrets.SERVER_IP }}
+            REMOTE_HOST: ${{ secrets.SERVER_IP }}
             REMOTE_USER: lighthouse
             TARGET: /www/wwwroot/ghgxj.xyz/
