@@ -17,10 +17,11 @@ jobs:
 
       #将编译完成的代码上传到服务器
       - name: upload built files to server
-        uses: wlixcc/SFTP-Deploy-Action@v1.0
-        with: 
-          username: 'lighthouse'
-          server: ${{ secrets.SERVER_IP }}
-          ssh_private_key: ${{ secrets.SERVER_SSH_KEY }}
-          local_path: './docs'
-          remote_path: '/home/lighthouse/deploy-test'
+        uses: easingthemes/ssh-deploy@main
+        env:
+            SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+            ARGS: -rltgoDzvO --delete
+            SOURCE: ./docs/
+            REMOTE_HOST: 43.139.15.247
+            REMOTE_USER: lighthouse
+            TARGET: /www/wwwroot/ghgxj.xyz/
