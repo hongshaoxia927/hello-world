@@ -1,0 +1,26 @@
+name: deploy test
+on: push
+
+jobs: 
+  deploy_job:
+    runs-on: ubuntu-latest
+    name: build & deploy
+    steps:
+      #拉取代码，安装依赖并进行编译 
+      - name: checkout the code
+        uses: actions/checkout@v2
+
+      - name: install the dependencies
+        run: npm install
+      - name: build with the code
+        run: npm run build
+
+      #将编译完成的代码上传到服务器
+      - name: upload built files to server
+        uses: wlixcc/SFTP-Deploy-Action@v1.0
+        with: 
+          usesname: 'lighthouse'
+          server: ${{ secrets.server_ip }}
+          ssh_private_key: ${{ secrets.server_ssh_key }}
+          local_path: './docs'
+          remote_path: '/home/lighthouse/deploy-test'
